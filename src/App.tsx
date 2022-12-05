@@ -44,18 +44,17 @@ function App() {
     </Canvas>
   );
 }
-
 function Scene() {
   const cube = useRef<Mesh>(null!);
 
-  useFrame((delta) => {
+  useFrame(() => {
     cube.current.rotateX(0.01);
     cube.current.rotateY(0.01);
   });
   return (
     <>
-      <MovingSpot color="#0c8cbf" position={[3, 3, 2]} />
-      <MovingSpot color="#b00c3f" position={[1, 3, 0]} />
+      <MovingSpot color="#0c8cbf" position={[3, 5, 2]} />
+      <MovingSpot color="#b00c3f" position={[1, 5, 0]} />
       <mesh position={[0, 0.8, 0]} ref={cube}>
         <boxGeometry args={[2, 2, 2]} />
         <meshPhysicalMaterial
@@ -70,7 +69,7 @@ function Scene() {
       </mesh>
       <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2}>
         <planeGeometry args={[50, 50]} />
-        <meshPhongMaterial color={"red"} />
+        <meshPhongMaterial color={"grey"} />
       </mesh>
       <mesh position={[0, 0, -5]}>
         <planeGeometry args={[50, 50]} />
@@ -95,7 +94,7 @@ function MovingSpot({ ...props }) {
         penumbra={1}
         distance={6}
         angle={0.35}
-        attenuation={5}
+        attenuation={7}
         anglePower={4}
         intensity={2}
         {...props}
